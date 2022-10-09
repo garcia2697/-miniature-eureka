@@ -1,11 +1,10 @@
 const express = require('express');
 
-
-// sets the heroku port conversion
+//sets the port
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// connects the route files
+//imports the routes
 const htmlRoutes = require('./routes/htmlRoutes.js');
 const apiRoutes = require('./routes/apiRoutes.js');
 
@@ -13,15 +12,9 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-// Use Routes
-app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
-
-
-// chains the listen method to the app variable
-app.listen(PORT, () => {
-  console.log(`API server now on port ${PORT}!`);
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
 });
-
-

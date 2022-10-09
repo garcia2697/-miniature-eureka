@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/garcia2697/-miniature-eureka#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "uuid": "^9.0.0"
   }
 }
