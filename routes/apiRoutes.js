@@ -29,5 +29,27 @@ app.route('/notes')
   });
 
 
+  // deletes the posted notes
+  app.delete('/notes/:id', (req, res) => {
+    let dataPath = path.join(__dirname, '../db/db.json');
+   
+    for(let i = 0; i < db.length; i++){
+      if(db[i].id == req.params.id) {
+        db.splice(i, 1);
+        break;
+      }
+    }
+
+    
+    fs.writeFileSync(dataPath, JSON.stringify(db), (err) => {
+      if(err){
+        return console.log(err);
+      } else {
+        console.log('Your note has been deleted.');
+      }
+    });
+    
+    res.json(db);
+  });
 
 module.exports = app;
