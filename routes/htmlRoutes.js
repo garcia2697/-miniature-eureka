@@ -4,6 +4,7 @@ const app = express();
 const fs = require("fs");
 const path = require("path");
 
+//sends the html to the desired routes
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname,'../public/notes.html'))
 });
